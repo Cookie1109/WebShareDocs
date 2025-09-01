@@ -1,0 +1,385 @@
+:root {
+  --sidebar-w: 280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, Arial;
+  /* ✅ Khóa cuộn toàn trang */
+}
+
+
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+/* Khung tổng */
+.app {
+  display: flex;
+  min-height: 100vh;
+  /* full chiều cao màn hình */
+  background: #f5f7fb;
+}
+
+/* Sidebar bên trái */
+aside.sidebar {
+  width: var(--sidebar-w);
+  background: #fff;
+  /* màu ví dụ */
+  border-right: 1px solid #000;
+  overflow-y: auto;
+  /* cuộn độc lập khi dài */
+  height: 100vh;
+  /* bám full cao */
+  /* luôn “dính” khi cuộn */
+}
+
+.sidebar-main {
+  overflow-y: auto;
+  padding: 20px 30px;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  /* để header không bị trong suốt khi cuộn */
+  z-index: 1;
+}
+
+.sidebar-header hr {
+  width: 100%;
+  margin: 10px 0 0;
+  /* cách logo 1 chút */
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.btn-create {
+  border: 5px solid #225E25;
+  border-radius: 20px;
+  background: #2E7D32;
+  width: 215px;
+  height: 55px;
+  color: black;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.btn-create svg {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+}
+
+.btn-create:hover {
+  background: #45a049;
+}
+
+.btn-create:active {
+  background: #45a049;
+  /* màu sáng hơn */
+  transform: scale(0.97);
+  /* hơi thu nhỏ xuống 1 tí cho có cảm giác nhấn */
+}
+
+/* Khu vực chính */
+main.content {
+  flex: 1;
+  padding: 25px;
+  background: #8DE491;
+  height: 100vh;
+  /* ✅ chiếm full màn hình */
+  display: flex;
+  /* để chat chiếm hết chiều cao */
+  flex-direction: column;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  /* tách 2 khối ra 2 đầu */
+  align-items: center;
+  /* căn giữa theo chiều dọc */
+  padding: 10px 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 765px;
+  height: 45px;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  /* để button không lòi ra ngoài */
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  height: 45px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.search-box button {
+  background: #2E7D32;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: white;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-box button:hover {
+  background: #45a049;
+}
+
+.search-box button:active {
+  background: #3d633f;
+
+  svg {
+    transform: scale(0.75);
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  gap: 20px;
+  /* khoảng cách giữa avatar và tên */
+}
+
+.avt-account {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: #2E7D32;
+  cursor: pointer;
+  display: flex;
+  /* căn giữa nội dung */
+  align-items: center;
+  justify-content: center;
+}
+
+.avt-account:hover {
+  background: #45a049;
+  /* đổi màu khi hover */
+}
+
+.account-name {
+  font-weight: bold;
+  color: #333;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* Demo */
+.btn-upload {
+  border: 5px solid #BF893A;
+  border-radius: 20px;
+  background: #FFB74D;
+  width: 260px;
+  height: 55px;
+  color: black;
+  cursor: pointer;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.btn-upload svg {
+  width: 28px;
+  height: 28px;
+}
+
+.btn-upload:hover {
+  background: #f3ac42;
+}
+
+.btn-upload:active {
+  background: #f3ac42;
+  /* màu sáng hơn */
+  transform: scale(0.97);
+  /* hơi thu nhỏ xuống 1 tí cho có cảm giác nhấn */
+}
+
+.chat {
+  background: #fff;
+  flex: 1;
+  /* ✅ cao hết phần còn lại */
+  border: 1px solid #e3e8ef;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-y: auto;
+
+  /* ✅ chỉ chat cuộn */
+}
+
+/* Responsive: ẩn/hiện sidebar trên màn nhỏ (tùy chọn) */
+@media (max-width: 900px) {
+  .app {
+    position: relative;
+
+  }
+
+  aside.sidebar {
+    width: 100px;
+    min-width: 100px;
+    /* sidebar hẹp lại */
+  }
+
+  .sidebar-header {
+    padding: 20px 15px;
+  }
+
+  .btn-create {
+    width: 90px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 900x) {
+  .search-box {
+    max-width: 100%;
+    /* choán hết chiều ngang khi màn hình nhỏ */
+    border-radius: 20px;
+    /* có thể chỉnh radius nhỏ hơn cho gọn */
+  }
+}
+
+@media (max-width: 780px) {
+  .main-header {
+    flex-direction: column;
+    /* header xuống thành 2 hàng */
+  }
+
+  .search-box {
+    width: 100%;
+    /* search full chiều ngang */
+  }
+
+  .account {
+    margin-top: 10px;
+  }
+}
+
+
+.modal {
+  display: none;
+  /* Ẩn mặc định */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.5);
+  /* nền mờ */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Khung modal */
+.modal-content {
+  background: #FFFBD5;
+  margin: auto;
+  padding: 0;
+  border-radius: 12px;
+  width: 800px;
+  max-width: 90%;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Container login */
+.login-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Form bên trái */
+.login-form {
+  flex: 1;
+  padding: 40px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #555;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #555;
+}
+
+/* Ảnh bên phải */
+.login-image {
+  flex: 1;
+  background: url("img/1_0155-1.jpg") no-repeat center;
+  background-size: cover;
+}
